@@ -11,7 +11,7 @@ function send() {
   let phone = document.querySelector('#phoneValue').value;
   let adress = document.querySelector('#adressValue').value;
   $.ajax({
-    url: "https://script.google.com/macros/s/AKfycbwa-x0rnFLSIZ4OxBhzDeFzdetQ0qdMcM4S2L4e_1Nil7WFwd2QsR7HSK620vqjj_37/exec",
+    url: "https://script.google.com/macros/s/AKfycbzfYA02jg6SbgFAjijOK_JFbt5qhuR93IEbedDuIUuJTHjU6NUmG5M1vVXN63cAFUQy/exec",
     type: "POST",
     data: {
         "name": name,
@@ -36,7 +36,7 @@ function search() {
   searchSuccess.innerHTML = ''
   searchSuccessDom = ''
   $.ajax({
-    url: "https://script.google.com/macros/s/AKfycbxA0IH7JNis6pO44nON4UGtN4S628aTFDwg8eowqAO6eaANTFSfL0k1CMuuWWqbDbT6/exec",
+    url: "https://script.google.com/macros/s/AKfycbzfYA02jg6SbgFAjijOK_JFbt5qhuR93IEbedDuIUuJTHjU6NUmG5M1vVXN63cAFUQy/exec",
     type: "POST",
     data: {
         "searchName": searchName,
@@ -62,14 +62,14 @@ function searchAll() {
   all.innerHTML = ''
   allDom = ''
   $.ajax({
-    url: "https://script.google.com/macros/s/AKfycbxA0IH7JNis6pO44nON4UGtN4S628aTFDwg8eowqAO6eaANTFSfL0k1CMuuWWqbDbT6/exec",
+    url: "https://script.google.com/macros/s/AKfycbzfYA02jg6SbgFAjijOK_JFbt5qhuR93IEbedDuIUuJTHjU6NUmG5M1vVXN63cAFUQy/exec",
     type: "GET",
     success: function(response) {
       console.log('response', response)
       response.forEach((element, index) => {
         console.log('element', element)
         console.log('index', index)
-        allDom += `<div>第${index + 1}筆，姓名:${element.data[0]}，電話:${element.data[1]}，地址:${element.data[2]}，<button id="removeButton" value="${element.index}">刪除 序號${element.index}</button></div>`
+        allDom += `<div>第${index + 1}筆，姓名:${element.data[0]}，電話:${element.data[1]}，地址:${element.data[2]}，<button id="removeButton" value="${element.index + 1}">刪除 序號${element.index + 1}</button></div>`
       })
       all.innerHTML = allDom
     },
@@ -79,7 +79,7 @@ function searchAll() {
 $('body').on('click', '#removeButton', function(e) {
   console.log('e', e.target.value)
   $.ajax({
-    url: "https://script.google.com/macros/s/AKfycbxA0IH7JNis6pO44nON4UGtN4S628aTFDwg8eowqAO6eaANTFSfL0k1CMuuWWqbDbT6/exec",
+    url: "https://script.google.com/macros/s/AKfycbzfYA02jg6SbgFAjijOK_JFbt5qhuR93IEbedDuIUuJTHjU6NUmG5M1vVXN63cAFUQy/exec",
     type: "POST",
     data: {
         "deleteId": e.target.value,
